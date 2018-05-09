@@ -1,0 +1,63 @@
+
+#Exploring Kobe's Shots
+###Alexandru Papiu
+
+This is a quick look at the dataset and some of the features. Sports!
+
+Loading in the data:
+```{r, message = FALSE, warning = FALSE}
+library(dplyr)
+library(ggplot2)
+
+data <- read.csv("data.csv", stringsAsFactors = FALSE)
+
+train <- data[!is.na(data$shot_made_flag),]
+test <- data[is.na(data$shot_made_flag),]
+
+train$shot_made_flag <- as.factor(train$shot_made_flag)
+```
+
+We have quite a few features in this data set: 
+```{r}
+names(train)
+```
+
+I am curious about two things to begin with: the location of the shots on the court and how Kobe's accuracy is related to certain factors. Let's make two functions, one called `pplot` that plots the accuracy by factor levels and another called `courtplot` that maps features by position.
+
+```{r}
+
+train$shot_made_flag <- factor(train$shot_made_flag, levels = c("1", "0"))
+
+#a plot to see accuracy by feature
+pplot <- function(feat) {
+    feat <- substitute(feat)
+    ggplot(data = train, aes_q(x = feat)) +
+        geom_bar(aes(fill = shot_made_flag), stat = "count", position = "fill") +
+    scale_fill_brewer(palette = "Set1", direction = -1) +
+     ggtitle(paste("accuracy by", feat))
+
+}
+
+# a plot to see position by feature
+courtplot <- function(feat) {
+        feat <- substitute(feat)
+    train %>% 
+    ggplot(aes(x = loc_x, y = loc_y)) +
+        geom_point(aes_q(color = feat), alpha = 0.9, size = 0.5) +
+        ylim(c(-50, 800)) +
+        scale_color_brewer(type='div', palette = 'Set2') +
+        theme_void() +
+        ggtitle(paste(feat))
+}
+```
+
+Let's take a look at the locations for the various shot_types.
+```{r, warning = FALSE}
+courtplot(combined_shot_type) #hard to see here.
+```
+```{r}
+courtplot(shot_zone_area)
+courtplot(shot_zone_basic)
+courtplot(shot_zone_range)
+courtplot(shot_type)
+```
