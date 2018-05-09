@@ -1,0 +1,160 @@
+{% extends 'basic.html' %}
+{% block body %}
+
+<div id="opponent"></div>
+<div id="action_type"></div>
+<div id="shot_type"></div>
+<div id="season"></div>
+<div id="shot_zone_range"></div>
+<div id="shot_zone_basic"></div>
+<div id="data_shot_zone_num_attempts"></div>
+<!--<div id="shot_zone_area"></div>-->
+
+
+<script>
+var trace1 = {
+  x : ['NYK', 'VAN', 'SAC', 'POR', 'GSW', 'PHX', 'TOR', 'LAC', 'DEN', 'DAL', 'SEA', 'ATL', 'NOH', 'MEM', 'PHI', 'MIN', 'UTA', 'DET', 'CLE', 'SAS', 'NJN', 'CHA', 'ORL', 'HOU', 'CHI', 'MIA', 'WAS', 'OKC', 'BOS', 'MIL', 'NOP', 'IND', 'BKN'],
+  y : [0.4770318, 0.47058824, 0.46528274, 0.46517026, 0.46456692, 0.46449512, 0.46402878, 0.46089387, 0.45784023, 0.45401743, 0.45244956, 0.4520548, 0.45052633, 0.45005742, 0.44941956, 0.44462675, 0.44426495, 0.44122657, 0.4396887, 0.43650794, 0.43601894, 0.436, 0.43543047, 0.43459615, 0.43023255, 0.42940038, 0.42714572, 0.41889483, 0.41123882, 0.41025642, 0.4076655, 0.40095848, 0.4],
+  name: 'Opponent',
+  type: 'bar'
+};
+var data_opponent = [trace1]
+var layout = {
+    title: 'Opponenet',
+    barmode: 'group'};
+Plotly.newPlot('opponent', data_opponent, layout);
+
+var trace2 = {
+  x : ['Turnaround Finger Roll Shot', 'Hook Bank Shot', 'Reverse Slam Dunk Shot', 'Running Slam Dunk Shot', 'Driving Floating Bank Jump Shot', 'Slam Dunk Shot', 'Driving Slam Dunk Shot', 'Driving Dunk Shot', 'Alley Oop Dunk Shot', 'Reverse Dunk Shot', 'Follow Up Dunk Shot', 'Running Dunk Shot', 'Fadeaway Bank shot', 'Driving Finger Roll Layup Shot', 'Running Hook Shot', 'Driving Finger Roll Shot', 'Running Bank shot', 'Finger Roll Layup Shot', 'Turnaround Bank shot', 'Dunk Shot', 'Jump Bank Shot', 'Running Jump Shot', 'Driving Reverse Layup Shot', 'Driving Layup Shot', 'Jump Hook Shot', 'Pullup Jump shot', 'Floating Jump shot', 'Alley Oop Layup shot', 'Running Layup Shot', 'Driving Bank shot', 'Putback Layup Shot', 'Putback Dunk Shot', 'Cutting Layup Shot', 'Running Pull-Up Jump Shot', 'Reverse Layup Shot', 'Step Back Jump shot', 'Driving Hook Shot', 'Running Finger Roll Layup Shot', 'Turnaround Jump Shot', 'Turnaround Fadeaway shot', 'Fadeaway Jump Shot', 'Running Reverse Layup Shot', 'Pullup Bank shot', 'Turnaround Hook Shot', 'Putback Slam Dunk Shot', 'Tip Layup Shot', 'Finger Roll Shot', 'Driving Jump shot', 'Layup Shot', 'Hook Shot', 'Tip Shot', 'Driving Floating Jump Shot', 'Jump Shot', 'Running Finger Roll Shot', 'Running Tip Shot'],
+  y : [1.0, 1.0, 1.0, 1.0, 1.0, 0.98203593, 0.9767442, 0.9766537, 0.94736844, 0.91803277, 0.9, 0.8888889, 0.8888889, 0.88135594, 0.8787879, 0.85294116, 0.8372093, 0.8214286, 0.79310346, 0.77880186, 0.7750865, 0.7471117, 0.74698794, 0.7414005, 0.7368421, 0.7238806, 0.72043014, 0.7164179, 0.7058824, 0.6666667, 0.6666667, 0.6666667, 0.6666667, 0.6666667, 0.6366366, 0.6320755, 0.61538464, 0.6, 0.59820426, 0.58469945, 0.5745413, 0.5714286, 0.54545456, 0.5, 0.5, 0.5, 0.46153846, 0.4347826, 0.38532963, 0.369863, 0.35099337, 0.33333334, 0.32691336, 0.25, 0.0],
+  name: 'Action Type',
+  title : 'Action Type',
+  type: 'bar'
+};
+var data_action_type = [trace1]
+var layout = {
+    title: 'Opponent',
+    barmode: 'group'};
+Plotly.newPlot('action_type', data_action_type, layout);
+
+var trace3 = {
+  x: ['2PT Field Goal', '3PT Field Goal'],
+  y: [0.4773478, 0.3292683],
+  name: 'shot type',
+  type: 'bar'
+};
+
+var trace4 = {
+  x: ['2PT Field Goal', '3PT Field Goal'],
+  y: [0.5226522088050842, 0.6707316935062408],
+  name: 'Miss',
+  type: 'bar'
+};
+
+var data_shot_type = [trace3, trace4];
+var layout = {
+    title : 'Shot_type(2PT, 3PT)',
+    barmode: 'stack'};
+
+Plotly.newPlot('shot_type', data_shot_type, layout);
+
+var trace5 = {
+  x: [2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000, 1999, 1998, 1997, 1996],
+  y: [0.35622317, 0.37605396, 0.40677965, 0.45783132, 0.42584747, 0.44641683, 0.4537246, 0.46785522, 0.4683892, 0.45788473, 0.4537422, 0.43655723, 0.43326038, 0.4362851, 0.45843092, 0.46666667, 0.46036586, 0.45882353, 0.43086419, 0.4229765],
+  type: 'scatter'
+};
+
+var data = [trace5];
+var layout = {
+title:'Season'
+}
+Plotly.newPlot('season', data, layout);
+
+
+
+var trace6 = {
+  x : ['Less Than 8 ft.', '8-16 ft.', '16-24 ft.', '24+ ft.', 'Back Court Shot'],
+  y : [0.5731195, 0.43548387, 0.40176633, 0.3325128, 0.013888889],
+  name: 'Shot Zone Range',
+  title : 'Shot Zone Range',
+  type: 'bar'
+};
+<!--var data_shot_zone_range = [trace6]-->
+<!--var layout = {-->
+    <!--title : 'Shot Zone Range',-->
+    <!--barmode: 'group'};-->
+<!--Plotly.newPlot('shot_zone_range', data_shot_zone_range, layout);-->
+
+var trace7 = {
+  x : ['Restricted Area', 'In The Paint (Non-RA)', 'Mid-Range', 'Left Corner 3', 'Right Corner 3', 'Above the Break 3', 'Backcourt'],
+  y : [0.618004, 0.45438144, 0.4062856, 0.37083334, 0.33933935, 0.32923728, 0.016666668],
+  name: 'Shot Zone Basic',
+  title : 'Shot Zone Basic',
+  type: 'bar'
+};
+
+var trace8 = {
+  x : ['Center(C)', 'Right Side(R)', 'Left Side(L)', 'Right Side Center(RC)', 'Left Side Center(LC)', 'Back Court(BC)'],
+  y : [0.52555585, 0.40165848, 0.396871, 0.3825672, 0.36117718, 0.013888889],
+  name: 'Shot Zone Area',
+  title : 'Shot Zone Area',
+  type: 'bar'
+};
+var data_shot_zone_basic = [trace6, trace7, trace8, trace3]
+var layout = {
+    title: 'Shot Zone Range/ Basic/ Area/ type(2PT/3PT)',
+    barmode: 'group'};
+Plotly.newPlot('shot_zone_basic', data_shot_zone_basic, layout);
+
+
+
+var trace10 = {
+ x :  ['Less Than 8 ft.', '16-24 ft.', '8-16 ft.', '24+ ft.', 'Back Court Shot'] ,
+ y :  [9398, 8315, 6626, 6275, 83],
+  name: 'Shot Zone Range',
+  title : 'Shot Zone Range',
+  type: 'bar'
+};
+<!--var data_shot_zone_range = [trace6]-->
+<!--var layout = {-->
+    <!--title : 'Shot Zone Range',-->
+    <!--barmode: 'group'};-->
+<!--Plotly.newPlot('shot_zone_range', data_shot_zone_range, layout);-->
+
+var trace11 = {
+ x :  ['Mid-Range', 'Restricted Area', 'Above the Break 3', 'In The Paint (Non-RA)', 'Right Corner 3', 'Left Corner 3', 'Backcourt'] ,
+ y :  [12625, 7136, 5620, 4578, 387, 280, 71],
+  name: 'Shot Zone Basic',
+  title : 'Shot Zone Basic',
+  type: 'bar'
+};
+
+var trace12 = {
+  x :  ['Center(C)', 'Right Side Center(RC)', 'Right Side(R)', 'Left Side Center(LC)', 'Left Side(L)', 'Back Court(BC)'],
+  y :  [13455, 4776, 4588, 4044, 3751, 83],
+  name: 'Shot Zone Area',
+  title : 'Shot Zone Area',
+  type: 'bar'
+};
+
+var trace13 = {
+  x :  ['2PT Field Goal', '3PT Field Goal'],
+  y :  [24271, 6426],
+  name: 'shot type',
+  type: 'bar'
+};
+
+var data_shot_zone_num_attempts = [trace10, trace11, trace12, trace13]
+var layout = {
+    title: 'Number Of Attempts Shot Zone Range/ Basic/ Area/ type(2PT/3PT)',
+    barmode: 'group'};
+Plotly.newPlot('data_shot_zone_num_attempts', data_shot_zone_num_attempts, layout);
+
+
+
+
+</script>
+
+
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'basic.html' %}
+{% block body %}
+<div id="distribution"></div>
+<script>
+    var data = []
+
+    {% for d in data.distribution %}
+        var {{d[0]}} = {
+            name : {{d[0]|tojson}},
+            type: 'scatter',
+            mode: 'markers',
+            x : {{d[1]|tojson}},
+            y: {{d[2]|tojson}}
+        }
+        data.push({{d[0]}})
+    {% endfor %}
+
+    var layout = {
+        title: 'Kobe Action Type',
+        xaxis: {
+            range: [-300, 300 ]
+        },
+        yaxis: {
+            range: [ -100, 500]
+        },
+        height:800,
+        width:1200,
+        shapes:{{court|tojson}}
+    };
+    Plotly.newPlot('distribution', data, layout);
+</script>
+{% endblock %}

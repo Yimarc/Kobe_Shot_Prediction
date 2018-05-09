@@ -1,0 +1,35 @@
+{% extends 'basic.html' %}
+{% block body %}
+<h1>Hello</h1>
+
+<div id="bar1"></div>
+<div id="bar2"></div>
+<!--<div id="ratio"></div>-->
+<!--<div id="weight"></div>-->
+<!--<div id="gender"></div>-->
+<script>
+
+
+var trace1 = {
+  x : ['Address', 'Photograph_-_Person', 'Ethnicity', 'Email_Address', 'Employee_Login_Credentials', 'Employment_History', 'Treatment_Information', 'Protected_Health_Information_(PHI)', 'Medical_Record_Number', 'Description_of_Health_Care_Services', 'License_Plate_Number', 'Student_ID_Number', 'Credit_Card_Information', 'Signature', 'Health_Insurance_Policy_Number', 'Grade', 'Fake_ID_Card_Information', 'IP_Address', "Doctor's_Name", 'Biographic_Data'],
+  y : [0.1903556596809351, 0.14856240802309137, 0.12119702450173732, 0.10570865010174992, 0.09990114918898063, 0.0950959949984619, 0.09171073634542648, 0.08415513028167569, 0.06460830771667601, 0.06430454628506439, 0.05991209808003701, 0.05766830048573849, 0.05695297972419543, 0.054118866491082225, 0.050842645056434634, 0.04633644922810893, 0.04531960829670754, 0.045176960444136015, 0.043851724197199744, 0.04019016600488041],
+  name: 'Betweeness Centrality',
+  type: 'bar'
+};
+
+var trace2 = {
+  x : ['Address', 'Email_Address', 'Credit_Card_Information', 'Employee_Login_Credentials', 'Treatment_Information', 'Biographic_Data', 'Personally_Identifiable_Information_(PII)', 'Student_ID_Number', 'Password', 'Biometric_Data', "Doctor's_Name", 'Ethnicity', 'Description_of_Health_Care_Services', 'Grade', 'Disability', 'Photograph_-_Person', 'Employment_History', 'Medical_Record_Number', 'Username', 'Account_Number'],
+  y : [0.5919282511210763, 0.5569620253164557, 0.5196850393700787, 0.515625, 0.4981132075471698, 0.4748201438848921, 0.4748201438848921, 0.46808510638297873, 0.4664310954063604, 0.45993031358885017, 0.4583333333333333, 0.45517241379310347, 0.45517241379310347, 0.4536082474226804, 0.4520547945205479, 0.4520547945205479, 0.4520547945205479, 0.44745762711864406, 0.44745762711864406, 0.4429530201342282],
+  name: 'Closeness Centrality',
+  type: 'bar'
+};
+
+var data = [trace1];
+var layout = {barmode: 'group'};
+Plotly.newPlot('bar1', data, layout);
+
+var data = [trace2];
+var layout = {barmode: 'group'};
+Plotly.newPlot('bar2', data, layout);
+</script>
+{% endblock %}
